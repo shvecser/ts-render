@@ -22,7 +22,7 @@ COPY ./tailscale-proxy.mjs /app/tailscale-proxy.mjs
 COPY --from=tailscale /tailscale/tailscaled /app/tailscaled
 COPY --from=tailscale /tailscale/tailscale /app/tailscale
 
-RUN chmod +x /app/start.sh
+RUN chmod +x start.sh
 
 EXPOSE 24344
 
