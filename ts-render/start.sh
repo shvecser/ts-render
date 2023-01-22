@@ -9,4 +9,4 @@ if test -n "${TAILSCALE_AUTH_KEY-}"; then
   echo 'Tailscale started.'
 fi
 
-node --no-warnings --inspect=0.0.0.0:9229 tailscale-proxy.mjs
+node --no-warnings --inspect=0.0.0.0:9229 /app/ts-render/tailscale-proxy.mjs
