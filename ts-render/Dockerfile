@@ -14,17 +14,17 @@ RUN mkdir -p /var/lib/tailscale
 
 FROM alpine:latest AS base
 RUN apk add --no-cache --update nodejs-current tini
-WORKDIR /app
+WORKDIR /ts-render
 ENTRYPOINT ["/sbin/tini", "-s", "--"]
 
-COPY --chown=root ./start.sh /app/start.sh
+COPY --chown=root ./start.sh /ts-render/start.sh
 COPY ./tailscale-proxy.mjs /app/tailscale-proxy.mjs
 COPY --from=tailscale /tailscale/tailscaled /app/tailscaled
 COPY --from=tailscale /tailscale/tailscale /app/tailscale
 
-RUN chmod +x start.sh
+RUN chmod +x ts-render/start.sh
 
 EXPOSE 24344
 
 USER root
-CMD ["/app/start.sh"]
+CMD ["/ts-render/start.sh"]
