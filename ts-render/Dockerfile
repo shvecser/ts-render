@@ -18,11 +18,11 @@ WORKDIR /ts-render
 ENTRYPOINT ["/sbin/tini", "-s", "--"]
 
 COPY --chown=root ./start.sh /ts-render/start.sh
-COPY ./tailscale-proxy.mjs /app/tailscale-proxy.mjs
-COPY --from=tailscale /tailscale/tailscaled /app/tailscaled
-COPY --from=tailscale /tailscale/tailscale /app/tailscale
+COPY ./tailscale-proxy.mjs /ts-render/tailscale-proxy.mjs
+COPY --from=tailscale /tailscale/tailscaled /ts-render/tailscaled
+COPY --from=tailscale /tailscale/tailscale /ts-render/tailscale
 
-RUN chmod +x ts-render/start.sh
+RUN chmod +x start.sh
 
 EXPOSE 24344
 
